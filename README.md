@@ -1,6 +1,9 @@
 # react-native-ws
 En workshop i react-native
 
+# Oppsett. 
+Pass på at du har Node v6 eller nyere installert på datamaskinen din og [Expo](https://expo.io) på telefonen din. 
+
 # Oppgaver (Mats)
 
 ## Oppgave 1: Komme i gang 
