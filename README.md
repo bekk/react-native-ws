@@ -81,7 +81,7 @@ Enn så lenge kan du kommentere ut innholdet av `render` i `Àpp.js` og erstatte
 
 Applikasjonen vår kan både liste ut alle pokemonene og vise detaljer om en. Det ville derfor vært naturlig at man 
 kunne trykke på en pokemon i listen og få opp informasjon om denne. Vi skal gjøre dette ved å holde på informasjon om
-hva som skal vises i [state](https://facebook.github.io/react-native/docs/state.html).
+hva som skal vises i [state](https://facebook.github.io/react-native/docs/state.html). På denne måten kan vi sjekke hva vi skal vise til brukeren slik som nedenfor.
 
 ```
 App.js
