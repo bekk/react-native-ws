@@ -77,8 +77,38 @@ export default PokeView;
 
 Enn så lenge kan du kommentere ut innholdet av `render` i `Àpp.js` og erstatte det med det nye kompnentet du skal lage. 
 
-9. Lag en enkel routing, slik at man kan navigere frem og tilbake mellom listen og detaljer.
+## Routing
+
+Applikasjonen vår kan både liste ut alle pokemonene og vise detaljer om en. Det ville derfor vært naturlig at man 
+kunne trykke på en pokemon i listen og få opp informasjon om denne. Vi skal gjøre dette ved å holde på informasjon om
+hva som skal vises i [state](https://facebook.github.io/react-native/docs/state.html).
+
+```
+App.js
+class App extends React.Component {
+  ...
+  render() {
+    if (this.state.route === 'List') {
+      // return details
+    }
+    else if (this.state.route === 'Details') {
+      // return details
+    }
+  }
+}
+export default App;
+
+``` 
+
+### Din oppgave
+
+Lag en enkel routing slik at man kan navigere mellom liste- og detalje-visning. 
+
+
+Tips 1: Man endrer på state ved å bruke funksjonen [setState](https://facebook.github.io/react-native/docs/state.html).
+
+Tips 2: Man kan sende med funksjoner som [props](https://facebook.github.io/react-native/docs/props.html) til komponenter. 
+
 
 Ekstra: AR.
 
-# Før vi starter. (Svein)
