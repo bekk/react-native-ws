@@ -153,7 +153,7 @@ class App extends React.Component {
   ...
   render() {
     if (this.state.route === 'List') {
-      // return details
+      // return list
     }
     else if (this.state.route === 'Details') {
       // return details
@@ -165,7 +165,7 @@ export default App;
 
 **Din oppgave:** Lag en enkel routing slik at man kan navigere mellom liste- og detalje-visning.
 
-Tips 1: Man endrer på state ved å bruke funksjonen [setState](https://facebook.github.io/react-native/docs/state.html).
+Tips 1: Man endrer på state ved å bruke funksjonen [setState]("https://facebook.github.io/react-native/docs/state.html")
 
 Tips 2: Man kan sende med funksjoner som [props](https://facebook.github.io/react-native/docs/props.html) til komponenter.
 
