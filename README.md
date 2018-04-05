@@ -4,6 +4,8 @@ En workshop i react-native
 # Oppsett. 
 Pass på at du har Node v6 eller nyere installert på datamaskinen din og [Expo](https://expo.io) på telefonen din. 
 
+Alternativt: Hvis du heller ønsker å kjøre applikasjonen i en simulator følg oppsettet under `Building Projects with Native Code` i [dokumentasjonen til Facebook](https://facebook.github.io/react-native/docs/getting-started.html)
+
 # Oppgaver (Mats)
 
 ## Oppgave 1: Komme i gang 
