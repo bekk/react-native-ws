@@ -120,7 +120,7 @@ For å gjøre et kall gir man rett og slett en `url` som argument til `fetch` so
 informasjon om pokemonen med id 1 (Bulbasaur).
 
 ```javascript
-fetch(http://pokeapi.co/api/v2/pokemon/1);
+fetch("http://pokeapi.co/api/v2/pokemon/1");
 ```
 
 **Din oppgave:** Du skal nå lage et komponent som viser frem informasjon om en pokemon basert på id. Feks. ved å gjøre et fetch-kall i
@@ -167,7 +167,7 @@ export default App;
 
 **Din oppgave:** Lag en enkel routing slik at man kan navigere mellom liste- og detalje-visning.
 
-Tips 1: Man endrer på state ved å bruke funksjonen [setState]("https://facebook.github.io/react-native/docs/state.html")
+Tips 1: Man endrer på state ved å bruke funksjonen [setState](https://facebook.github.io/react-native/docs/state.html)
 
 Tips 2: Man kan sende med funksjoner som [props](https://facebook.github.io/react-native/docs/props.html) til komponenter.
 
