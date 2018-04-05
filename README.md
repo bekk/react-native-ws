@@ -27,15 +27,53 @@ Du kan lese mer om `create-react-native-app` her: https://github.com/react-commu
 Når dette er gjort, skal du ha en QR-kode i terminalvinduet ditt. Dette kan du scanne med Expo-appen på telefonen din, for å snurre opp appen der.
 Om du ønsker å kjøre i simulator, kan du kjøre `npm start ios` eller `npm run android`, i stedet for `npm start`.
 
-Bytt ut noe av teksten i `App.js` og lagre fila. Appen skal restarte, og teksten endre seg automatisk. Kult? Dette kalles _Live Reload_.
+1. Bytt ut noe av teksten i `App.js` og lagre fila. Appen skal restarte, og teksten endre seg automatisk. Kult? Dette kalles _Live Reload_.
 
-Åpne utviklermenyen (rist på telefonen). Du vil få opp en meny. Her vil du se at du kan slå av Live Reload. Prøv det, og slå heller på _Hot Reloading_. Da skal tekst endre seg uten at hele appen lastes på nytt. Du kan nå åpne utviklerkonsollen på denne sida for å se logger fra appen din. I Chrome kan du trykke ALT+CMD+i for å få opp denne.
+2. Åpne utviklermenyen (rist på telefonen). Du vil få opp en meny. Her vil du se at du kan slå av Live Reload. Prøv det, og slå heller på _Hot Reloading_. Da skal tekst endre seg uten at hele appen lastes på nytt. Du kan nå åpne utviklerkonsollen på denne sida for å se logger fra appen din. I Chrome kan du trykke ALT+CMD+i for å få opp denne.
 
 Da skal du være veldig klar til å starte på din egen PokéDex!
 
 ## PokeList
 
-4. Mock opp firkanter som tar 1/3 av bredden. Fast bredde / Dimensions. (Styling / View)
+Vi skal begynne med å lage en oversikt over alle pokémonene. Vi ønsker å vise et bilde av hver pokémon i et rutenett.
+
+1. Begynn enkelt: Bruk et `View` til å lage en grå, kvadratisk firkant.
+
+Tips: I React-Native skriver vi stiler i JavaScript. Det ligner veldig på CSS, men er litt annerledes likevel. Du kan lese mer om stiler her:  https://facebook.github.io/react-native/docs/style.html. Du kan selv velge hvor store firkanter du vil ha, og hvor mange du vil ha på hver rad. Du kan prøve deg fram med pixel-verdier, eller bruke [Dimensions](https://facebook.github.io/react-native/docs/dimensions.html) til å basere størrelsen til firkantene i forhold til skjermstørrelsen. Om du vil ha tre stykk i bredden, kan det være fint om hver firkant er litt mindre enn en tredjedel av skjermens bredde. Da har vi også plass til litt luft rundt.
+
+Nå har du sikkert en grå, passe stor firkant midt på skjermen. Neste oppgave blir å lage rutenettet med mange firkanter i. React-Native sine stiler bruker Flexbox-systemet fra CSS aktivt. Vi kan bruke det til å lage et rutenett, omtrent slik:
+
+```
+render() {
+  return (
+    <View style={styles.container}>
+      <View style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around'}}>
+        <View style={styles.square}></View>
+        <View style={styles.square}></View>
+        <View style={styles.square}></View>
+      </View>
+    </View>
+  );
+}
+```
+
+Men, React-Native gir oss en svært praktisk komponent for dette formålet, nemlig [FlatList](https://facebook.github.io/react-native/docs/flatlist.html)!
+
+2. Gjør deg kjent med FlatList-komponenten og prøv å bruke denne til å lage et fint rutenett med grå firkanter.
+
+Tips: For å ha et sett med data å jobbe med, kan du lage en konstruktør over render-metoden, med en state som inneholder en liste med pokémon-ID-er. Disse ID-ene er tall fra 1 og oppover.
+
+```
+constructor() {
+  this.state = {
+    pokemonIds: Array(150).fill().map((e,i) => i + 1);
+  }
+}
+
+render() {
+  ...
+```
+
 5. Legg inn bilde i firkanter (<Image/>)
 6. Lister ut alle pokemons (<FlatList/>)
 7. Legg på TouchableOpacity på hvert bilde og console.log ut en string. (<TouchableOpacity />)
