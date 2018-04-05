@@ -79,9 +79,76 @@ render() {
 7. Legg på TouchableOpacity på hvert bilde og console.log ut en string. (<TouchableOpacity />)
 
 ## PokeView
-8. Lag et nytt komponent for å vise frem detaljer om en pokemon, kommenter ut FlatList enn så lenge. Vis frem ønsket data og kanskje et bilde. (Fetch data) eventuelt ActivityIndicator.
-9. Lag en enkel routing, slik at man kan navigere frem og tilbake mellom listen og detaljer.
+
+Vi har nå laget en applikasjon som lister ut alle pokemonene og ønsker nå å vise frem mer informasjon om hver pokemon.
+Det finnes selvfølgelig et [pokeapi](https://pokeapi.co/) med denne informasjonen. Besøk siden og bli kjent med apiet. 
+
+Vi skal bruke `/pokemon/{id}` endepunktet som gir oss informasjon om en pokemon med en gitt `id`.
+
+### Hente data.
+React Native bruker [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) til å gjøre nettverkskall. 
+For å gjøre et kall gir man rett og slett en `url` som argument til `fetch` som i eksempelet nedenfor hvor vi henter ut
+informasjon om pokemonen med id 1 (Bulbasaur).
+
+```javascript
+fetch(http://pokeapi.co/api/v2/pokemon/1);
+``` 
+
+### Din oppgave
+
+Du skal nå lage et komponent som viser frem informasjon om en pokemon basert på id. Feks. ved å gjøre et fetch-kall i
+`componentDidMount`. 
+
+```
+class PokeDetails extends React.Component {
+  componentDidMount() {
+    // Hent data 
+  }
+
+  render() {
+    // Returner ønskede detaljer.
+  }
+}
+export default PokeView;
+
+``` 
+
+Enn så lenge kan du kommentere ut innholdet av `render` i `Àpp.js` og erstatte det med det nye kompnentet du skal lage.
+
+Tips: Man kan bruke en [ActivityIndicator](https://facebook.github.io/react-native/docs/activityindicator.html) for å vise brukeren at man henter data.
+
+## Routing
+
+Applikasjonen vår kan både liste ut alle pokemonene og vise detaljer om en. Det ville derfor vært naturlig at man 
+kunne trykke på en pokemon i listen og få opp informasjon om denne. Vi skal gjøre dette ved å holde på informasjon om
+hva som skal vises i [state](https://facebook.github.io/react-native/docs/state.html). På denne måten kan vi sjekke hva vi skal vise til brukeren slik som nedenfor.
+
+```
+App.js
+class App extends React.Component {
+  ...
+  render() {
+    if (this.state.route === 'List') {
+      // return details
+    }
+    else if (this.state.route === 'Details') {
+      // return details
+    }
+  }
+}
+export default App;
+
+``` 
+
+### Din oppgave
+
+Lag en enkel routing slik at man kan navigere mellom liste- og detalje-visning. 
+
+
+Tips 1: Man endrer på state ved å bruke funksjonen [setState](https://facebook.github.io/react-native/docs/state.html).
+
+Tips 2: Man kan sende med funksjoner som [props](https://facebook.github.io/react-native/docs/props.html) til komponenter. 
+
 
 Ekstra: AR.
 
-# Før vi starter. (Svein)
