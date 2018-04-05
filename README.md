@@ -1,8 +1,8 @@
-# react-native-ws
+# Gotta catch'em all!
 
-En workshop i react-native
+En introduksjon til React Native i workshop-form.
 
-# Oppsett.
+# Oppsett
 
 Pass på at du har Node v6 eller nyere installert på datamaskinen din og [Expo](https://expo.io) på telefonen din.
 
@@ -14,7 +14,7 @@ Vi skal lage PokeDex!
 
 ## 1 Komme i gang
 
-For å komme fort i gang med React-Native-appen vår, skal vi bruke et verktøy som heter `create-react-native-app`.
+For å komme fort i gang med React Native-appen vår, skal vi bruke et verktøy som heter `create-react-native-app`.
 Dette verktøyet genererer en enkel app for oss, så vi har et godt utgangspunkt fra starten av. For å installere dette, kjør følgende:
 
 ### 1.1 Kjøre opp appen
@@ -48,11 +48,11 @@ Vi skal begynne med å lage en oversikt over alle pokémonene. Vi ønsker å vis
 
 **Din oppgave:** Bruk et `View` til å lage en grå, kvadratisk firkant.
 
-Tips: I React-Native skriver vi stiler i JavaScript. Det ligner veldig på CSS, men er litt annerledes likevel. Du kan lese mer om stiler her: https://facebook.github.io/react-native/docs/style.html. Du kan selv velge hvor store firkanter du vil ha, og hvor mange du vil ha på hver rad. Du kan prøve deg fram med pixel-verdier, eller bruke [Dimensions](https://facebook.github.io/react-native/docs/dimensions.html) til å basere størrelsen til firkantene i forhold til skjermstørrelsen. Om du vil ha tre stykk i bredden, kan det være fint om hver firkant er litt mindre enn en tredjedel av skjermens bredde. Da har vi også plass til litt luft rundt.
+Tips: I React Native skriver vi stiler i JavaScript. Det ligner veldig på CSS, men er litt annerledes likevel. Du kan lese mer om stiler her: https://facebook.github.io/react-native/docs/style.html. Du kan selv velge hvor store firkanter du vil ha, og hvor mange du vil ha på hver rad. Du kan prøve deg fram med pixel-verdier, eller bruke [Dimensions](https://facebook.github.io/react-native/docs/dimensions.html) til å basere størrelsen til firkantene i forhold til skjermstørrelsen. Om du vil ha tre stykk i bredden, kan det være fint om hver firkant er litt mindre enn en tredjedel av skjermens bredde. Da har vi også plass til litt luft rundt.
 
 ### 2.2 Layout
 
-Nå har du sikkert en grå, passe stor firkant midt på skjermen. Neste oppgave blir å lage rutenettet med mange firkanter i. React-Native sine stiler bruker Flexbox-systemet fra CSS aktivt. Vi kan bruke det til å lage et rutenett, omtrent slik:
+Nå har du sikkert en grå, passe stor firkant midt på skjermen. Neste oppgave blir å lage rutenettet med mange firkanter i. React Native sine stiler bruker Flexbox-systemet fra CSS aktivt. Vi kan bruke det til å lage et rutenett, omtrent slik:
 
 ```
 render() {
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
 });
 ```
 
-Men, React-Native gir oss en svært praktisk komponent for dette formålet, nemlig [FlatList](https://facebook.github.io/react-native/docs/flatlist.html)!
+Men, React Native gir oss en svært praktisk komponent for dette formålet, nemlig [FlatList](https://facebook.github.io/react-native/docs/flatlist.html)!
 
 
 **Din oppgave:** Gjør deg kjent med FlatList-komponenten og prøv å bruke denne til å lage et fint rutenett med grå firkanter.
@@ -107,17 +107,17 @@ render() {
 
 **Din oppgave:** Legg inn bilder av pokémon i firkantene
 
-I hver av firkantene skal vi nå ha et bilde. Da kan du bruke [Image-komponenten](https://facebook.github.io/react-native/docs/image.html) til React-Native. URL til bilder er på dette formatet: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{ID}.JPG`, der du bytter ut `{ID}` med pokémonens ID.
+I hver av firkantene skal vi nå ha et bilde. Da kan du bruke [Image-komponenten](https://facebook.github.io/react-native/docs/image.html) til React Native. URL til bilder er på dette formatet: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{ID}.JPG`, der du bytter ut `{ID}` med pokémonens ID.
 
 ### 2.6 Håndtere trykk
 
-Gratulerer med en fin oversikt over pokémoner! Men vi ønsker å få til litt mer når man trykker på en av dem. Da må vi gjøre firkantene våre trykkbare. I React-Native bruker man Touchable-komponenter for å håndtere trykk. For å registrere trykk på en komponent, må den være barn av en slik Touchable-komponent. Ved trykk vil da `onPress`-funksjonen bli kalt.
+Gratulerer med en fin oversikt over pokémoner! Men vi ønsker å få til litt mer når man trykker på en av dem. Da må vi gjøre firkantene våre trykkbare. I React Native bruker man Touchable-komponenter for å håndtere trykk. For å registrere trykk på en komponent, må den være barn av en slik Touchable-komponent. Ved trykk vil da `onPress`-funksjonen bli kalt.
 
 **Din oppgave:** Bruk [TouchableOpacity](https://facebook.github.io/react-native/docs/touchableopacity.html) til å skrive ut ID-en til pokémonen til konsollen ved trykk.
 
 Du kan lese mer om håndtering av trykk her: https://facebook.github.io/react-native/docs/handling-touches.html.
 
-## 3 PokeView
+## 3 PokeDetails
 
 Vi har nå laget en applikasjon som lister ut alle pokemonene og ønsker nå å vise frem mer informasjon om hver pokemon.
 Det finnes selvfølgelig et [pokeapi](https://pokeapi.co/) med denne informasjonen. Besøk siden og bli kjent med apiet.
@@ -147,14 +147,14 @@ class PokeDetails extends React.Component {
     // Returner ønskede detaljer.
   }
 }
-export default PokeView;
+export default PokeDetails;
 ```
 
 Enn så lenge kan du kommentere ut innholdet av `render` i `Àpp.js` og erstatte det med det nye kompnentet du skal lage.
 
-Tips: Man kan bruke en [ActivityIndicator](https://facebook.github.io/react-native/docs/activityindicator.html) for å vise brukeren at man henter data.
-
-Tips: Komponenten må vite hvilken pokémon den representerer. Dette kan gjøres ved å sende pokémonens ID som [prop](https://facebook.github.io/react-native/docs/props.html) til komponenten.
+Tips: 
+* Man kan bruke en [ActivityIndicator](https://facebook.github.io/react-native/docs/activityindicator.html) for å vise brukeren at man henter data.
+* Komponenten må vite hvilken pokémon den representerer. Dette kan gjøres ved å sende pokémonens ID som [prop](https://facebook.github.io/react-native/docs/props.html) til komponenten.
 
 ### 3.2 Navigering
 
@@ -180,8 +180,7 @@ export default App;
 
 **Din oppgave:** Lag en enkel routing slik at man kan navigere mellom liste- og detalje-visning.
 
-Tips 1: Man endrer på state ved å bruke funksjonen [setState](https://facebook.github.io/react-native/docs/state.html)
+Tips: 
+* Man endrer på state ved å bruke funksjonen [setState](https://facebook.github.io/react-native/docs/state.html)
+* Man kan sende med funksjoner som [props](https://facebook.github.io/react-native/docs/props.html) til komponenter. For eksempel kan det være lurt å bytte ut `onPress`-funksjonen du skrev i oppgave 2.6 med en som bruker `setState`. :wink:
 
-Tips 2: Man kan sende med funksjoner som [props](https://facebook.github.io/react-native/docs/props.html) til komponenter. For eksempel kan det være lurt å bytte ut `onPress`-funksjonen du skrev i oppgave 2.6 med en som bruker `setState`. :wink:
-
-Ekstra: AR.
