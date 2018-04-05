@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
 
 Men, React-Native gir oss en svært praktisk komponent for dette formålet, nemlig [FlatList](https://facebook.github.io/react-native/docs/flatlist.html)!
 
+
 **Din oppgave:** Gjør deg kjent med FlatList-komponenten og prøv å bruke denne til å lage et fint rutenett med grå firkanter.
 
 Tips: For å ha et sett med data å jobbe med, kan du lage en konstruktør over render-metoden, med en state som inneholder en liste med pokémon-ID-er. Disse ID-ene er tall fra 1 og oppover.
@@ -102,9 +103,19 @@ render() {
   ...
 ```
 
-5. Legg inn bilde i firkanter (<Image/>)
-6. Lister ut alle pokemons (<FlatList/>)
-7. Legg på TouchableOpacity på hvert bilde og console.log ut en string. (<TouchableOpacity />)
+### 2.5. Bilde
+
+**Din oppgave:** Legg inn bilder av pokémon i firkantene
+
+I hver av firkantene skal vi nå ha et bilde. Da kan du bruke [Image-komponenten](https://facebook.github.io/react-native/docs/image.html) til React-Native. URL til bilder er på dette formatet: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{ID}.JPG`, der du bytter ut `{ID}` med pokémonens ID.
+
+### 2.6 Håndtere trykk
+
+Gratulerer med en fin oversikt over pokémoner! Men vi ønsker å få til litt mer når man trykker på en av dem. Da må vi gjøre firkantene våre trykkbare. I React-Native bruker man Touchable-komponenter for å håndtere trykk. For å registrere trykk på en komponent, må den være barn av en slik Touchable-komponent. Ved trykk vil da `onPress`-funksjonen bli kalt.
+
+**Din oppgave:** Bruk [TouchableOpacity](https://facebook.github.io/react-native/docs/touchableopacity.html) til å skrive ut ID-en til pokémonen til konsollen ved trykk.
+
+Du kan lese mer om håndtering av trykk her: https://facebook.github.io/react-native/docs/handling-touches.html.
 
 ## 3 PokeView
 
@@ -143,6 +154,8 @@ Enn så lenge kan du kommentere ut innholdet av `render` i `Àpp.js` og erstatte
 
 Tips: Man kan bruke en [ActivityIndicator](https://facebook.github.io/react-native/docs/activityindicator.html) for å vise brukeren at man henter data.
 
+Tips: Komponenten må vite hvilken pokémon den representerer. Dette kan gjøres ved å sende pokémonens ID som [prop](https://facebook.github.io/react-native/docs/props.html) til komponenten.
+
 ### 3.2 Navigering
 
 Applikasjonen vår kan både liste ut alle pokemonene og vise detaljer om en. Det ville derfor vært naturlig at man
@@ -169,6 +182,6 @@ export default App;
 
 Tips 1: Man endrer på state ved å bruke funksjonen [setState](https://facebook.github.io/react-native/docs/state.html)
 
-Tips 2: Man kan sende med funksjoner som [props](https://facebook.github.io/react-native/docs/props.html) til komponenter.
+Tips 2: Man kan sende med funksjoner som [props](https://facebook.github.io/react-native/docs/props.html) til komponenter. For eksempel kan det være lurt å bytte ut `onPress`-funksjonen du skrev i oppgave 2.6 med en som bruker `setState`. :wink:
 
 Ekstra: AR.
