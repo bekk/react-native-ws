@@ -41,7 +41,7 @@ Bytt ut noe av teksten i `App.js` og lagre fila. Appen skal restarte, og teksten
 
 I utviklermenyen finner du også noe som heter _Debug JS Remotely_. Trykk på denne. En nettside vil åpne seg. Du kan nå åpne utviklerkonsollen på denne sida for å se logger fra appen din. I Chrome kan du trykke ALT+CMD+i for å få opp denne.
 
-**Din oppgave:** Bruk [`console.log`](https://developer.mozilla.org/en-US/docs/Web/API/Console/log) til å skrive ut "Hello world!" (eller noe annet), og sjekk at det dukker opp i nettleseren din.
+:trophy: **Din oppgave:** Bruk [`console.log`](https://developer.mozilla.org/en-US/docs/Web/API/Console/log) til å skrive ut "Hello world!" (eller noe annet), og sjekk at det dukker opp i nettleseren din.
 
 Da skal du være veldig klar til å starte på din egen PokéDex!
 
@@ -55,7 +55,7 @@ I React Native skriver vi stiler i JavaScript. Det ligner veldig på CSS, men er
 
 Vi begynner med én firkant, og du kan ta utgangspunkt i `App.js`.
 
-**Din oppgave:** Bruk et [`View`](https://facebook.github.io/react-native/docs/view.html) til å lage en grå, kvadratisk firkant.
+:trophy: **Din oppgave:** Bruk et [`View`](https://facebook.github.io/react-native/docs/view.html) til å lage en grå, kvadratisk firkant.
 
 ### 2.2 Layout
 
@@ -92,10 +92,10 @@ const styles = StyleSheet.create({
 });
 ```
 
-Men, React Native gir oss en svært praktisk komponent for dette formålet, nemlig [FlatList](https://facebook.github.io/react-native/docs/flatlist.html)!
+:heavy_exclamation_mark: Men, React Native gir oss en svært praktisk komponent for dette formålet, nemlig [FlatList](https://facebook.github.io/react-native/docs/flatlist.html)!
 
 
-**Din oppgave:** Gjør deg kjent med FlatList-komponenten og prøv å bruke denne til å lage et fint rutenett med grå firkanter.
+:trophy: **Din oppgave:** Gjør deg kjent med FlatList-komponenten og prøv å bruke denne til å lage et fint rutenett med grå firkanter.
 
 Tips: For å ha et sett med data å jobbe med, kan du lage en konstruktør over render-metoden, med en state som inneholder en liste med pokémon-ID-er. Disse ID-ene er tall fra 1 og oppover.
 
@@ -112,7 +112,7 @@ render() {
 
 ### 2.5. Bilde
 
-**Din oppgave:** Legg inn bilder av pokémon i firkantene
+:trophy: **Din oppgave:** Legg inn bilder av pokémon i firkantene
 
 I hver av firkantene skal vi nå ha et bilde. Da kan du bruke [Image-komponenten](https://facebook.github.io/react-native/docs/image.html) til React Native. URL til bilder er på dette formatet: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{ID}.JPG`, der du bytter ut `{ID}` med pokémonens ID.
 
@@ -120,7 +120,7 @@ I hver av firkantene skal vi nå ha et bilde. Da kan du bruke [Image-komponenten
 
 Gratulerer med en fin oversikt over pokémoner! Men vi ønsker å få til litt mer når man trykker på en av dem. Da må vi gjøre firkantene våre trykkbare. I React Native bruker man Touchable-komponenter for å håndtere trykk. For å registrere trykk på en komponent, må den være barn av en slik Touchable-komponent. Ved trykk vil da `onPress`-funksjonen bli kalt.
 
-**Din oppgave:** Bruk [TouchableOpacity](https://facebook.github.io/react-native/docs/touchableopacity.html) til å skrive ut ID-en til pokémonen til konsollen ved trykk.
+:trophy: **Din oppgave:** Bruk [TouchableOpacity](https://facebook.github.io/react-native/docs/touchableopacity.html) til å skrive ut ID-en til pokémonen til konsollen ved trykk.
 
 Du kan lese mer om håndtering av trykk her: https://facebook.github.io/react-native/docs/handling-touches.html.
 
@@ -141,7 +141,7 @@ informasjon om pokemonen med id 1 (Bulbasaur).
 fetch("http://pokeapi.co/api/v2/pokemon/1");
 ```
 
-**Din oppgave:** Du skal nå lage et komponent som viser frem informasjon om en pokemon basert på id. Feks. ved å gjøre et fetch-kall i
+:trophy: **Din oppgave:** Du skal nå lage et komponent som viser frem informasjon om en pokemon basert på id. Feks. ved å gjøre et fetch-kall i
 `componentDidMount`.
 
 ```
@@ -185,7 +185,7 @@ class App extends React.Component {
 export default App;
 ```
 
-**Din oppgave:** Lag en enkel routing slik at man kan navigere mellom liste- og detalje-visning.
+:trophy: **Din oppgave:** Lag en enkel routing slik at man kan navigere mellom liste- og detalje-visning.
 
 Tips:
 * Man endrer på state ved å bruke funksjonen [setState](https://facebook.github.io/react-native/docs/state.html)
