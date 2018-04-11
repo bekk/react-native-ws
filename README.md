@@ -148,6 +148,8 @@ fetch("http://pokeapi.co/api/v2/pokemon/1");
 Du kan kopiere eksempelkoden under i en ny fil som heter `PokeDetails.js`, og importere denne i `App.js` ved å legge `import PokeDetails from './PokeDetails` på øverste linje i `App.js`.
 
 ```
+import React from 'react'
+
 class PokeDetails extends React.Component {
   constructor(props) {
     super(props);
