@@ -145,6 +145,9 @@ fetch("http://pokeapi.co/api/v2/pokemon/1");
 :trophy: **Din oppgave:** Du skal nå lage et komponent som viser frem informasjon om en pokemon basert på id. Feks. ved å gjøre et fetch-kall i
 `componentDidMount`.
 
+:heavy_exclamation_mark: Enn så lenge kan du kommentere ut innholdet av `render` i `Àpp.js` og erstatte det med det nye kompnentet du skal lage.
+
+
 ```
 class PokeDetails extends React.Component {
   componentDidMount() {
@@ -157,8 +160,6 @@ class PokeDetails extends React.Component {
 }
 export default PokeDetails;
 ```
-
-Enn så lenge kan du kommentere ut innholdet av `render` i `Àpp.js` og erstatte det med det nye kompnentet du skal lage.
 
 Tips:
 * Man kan bruke en [ActivityIndicator](https://facebook.github.io/react-native/docs/activityindicator.html) for å vise brukeren at man henter data.
