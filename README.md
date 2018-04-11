@@ -102,8 +102,9 @@ Tips: For å ha et sett med data å jobbe med, kan du lage en konstruktør over 
 
 ```
 constructor() {
+  super()
   this.state = {
-    pokemonIds: Array(150).fill().map((e,i) => i + 1);
+    pokemonIds: Array(150).fill().map((e,i) => i + 1)
   }
 }
 
