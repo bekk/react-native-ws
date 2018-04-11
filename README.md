@@ -94,8 +94,9 @@ const styles = StyleSheet.create({
 
 :heavy_exclamation_mark: Men, React Native gir oss en svært praktisk komponent for dette formålet, nemlig [FlatList](https://facebook.github.io/react-native/docs/flatlist.html)!
 
-
 :trophy: **Din oppgave:** Gjør deg kjent med FlatList-komponenten og prøv å bruke denne til å lage et fint rutenett med grå firkanter.
+
+FlatList er en komponent som har to påkrevde props. `data` er en liste med ting, og `renderItem` er en funksjon som definerer hvordan hver av disse tingene skal rendres. I forrige oppgave lagde du en firkant. Den kan du kanskje returnere fra din `renderItem`-funksjon. FlatList har også andre nyttige props. Legg merke til blant annet `numColumns` og `onRefresh`.
 
 Tips: For å ha et sett med data å jobbe med, kan du lage en konstruktør over render-metoden, med en state som inneholder en liste med pokémon-ID-er. Disse ID-ene er tall fra 1 og oppover.
 
