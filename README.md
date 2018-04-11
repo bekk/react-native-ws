@@ -51,9 +51,11 @@ Vi skal begynne med å lage en oversikt over alle pokémonene. Vi ønsker å vis
 
 ### 2.1 Styling
 
-**Din oppgave:** Bruk et [`View`](https://facebook.github.io/react-native/docs/view.html) til å lage en grå, kvadratisk firkant.
+I React Native skriver vi stiler i JavaScript. Det ligner veldig på CSS, men er litt annerledes likevel. Du kan lese mer om stiler her: https://facebook.github.io/react-native/docs/style.html. Du kan selv velge hvor store firkanter du vil ha, og hvor mange du vil ha på hver rad. Du kan prøve deg fram med pixel-verdier, eller bruke [Dimensions](https://facebook.github.io/react-native/docs/dimensions.html) til å basere størrelsen til firkantene etter skjermstørrelsen. Om du vil ha tre stykk i bredden, kan det være fint om hver firkant er litt mindre enn en tredjedel av skjermens bredde. Da har vi også plass til litt luft rundt.
 
-Tips: I React Native skriver vi stiler i JavaScript. Det ligner veldig på CSS, men er litt annerledes likevel. Du kan lese mer om stiler her: https://facebook.github.io/react-native/docs/style.html. Du kan selv velge hvor store firkanter du vil ha, og hvor mange du vil ha på hver rad. Du kan prøve deg fram med pixel-verdier, eller bruke [Dimensions](https://facebook.github.io/react-native/docs/dimensions.html) til å basere størrelsen til firkantene i forhold til skjermstørrelsen. Om du vil ha tre stykk i bredden, kan det være fint om hver firkant er litt mindre enn en tredjedel av skjermens bredde. Da har vi også plass til litt luft rundt.
+Vi begynner med én firkant, og du kan ta utgangspunkt i `App.js`.
+
+**Din oppgave:** Bruk et [`View`](https://facebook.github.io/react-native/docs/view.html) til å lage en grå, kvadratisk firkant.
 
 ### 2.2 Layout
 
