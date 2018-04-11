@@ -147,8 +147,24 @@ fetch("http://pokeapi.co/api/v2/pokemon/1");
 
 ```
 class PokeDetails extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      pokemon: null
+    };
+  }
+
   componentDidMount() {
-    // Hent data
+    const { pokeId } = this.props;
+    if (pokeId) {
+      fetch(`http://pokeapi.co/api/v2/pokemon/${pokeId}/`)
+        .then(res => res.json())
+        .then(data => {
+          this.setState({ pokemon: data });
+        })
+        .catch(err => console.log(err));
+    }
   }
 
   render() {
