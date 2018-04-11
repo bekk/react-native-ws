@@ -28,9 +28,12 @@ npm start
 
 Du kan lese mer om `create-react-native-app` her: https://github.com/react-community/create-react-native-app
 
-Tips: Når dette er gjort, skal du ha en QR-kode i terminalvinduet ditt. Dette kan du scanne med Expo-appen på telefonen din, for å snurre opp appen der. Om du ønsker å kjøre i simulator, kan du kjøre `npm start ios` eller `npm run android`, i stedet for `npm start`.
+Tips: Når dette er gjort, skal du ha en QR-kode i terminalvinduet ditt. Dette kan du scanne med Expo-appen på telefonen din, for å snurre opp appen der.
+Obs! Mobiltelefonen og datamaskinen din må være på samme nettverk.
 
-### 1.2 Tips og triks
+Om du ønsker å kjøre i simulator, kan du kjøre `npm start ios` eller `npm run android`, i stedet for `npm start`.
+
+### 1.2 Utviklingsmiljø
 
 Bytt ut noe av teksten i `App.js` og lagre fila. Appen skal restarte, og teksten endre seg automatisk. Kult? Dette kalles _Live Reload_.
 
@@ -152,7 +155,7 @@ export default PokeDetails;
 
 Enn så lenge kan du kommentere ut innholdet av `render` i `Àpp.js` og erstatte det med det nye kompnentet du skal lage.
 
-Tips: 
+Tips:
 * Man kan bruke en [ActivityIndicator](https://facebook.github.io/react-native/docs/activityindicator.html) for å vise brukeren at man henter data.
 * Komponenten må vite hvilken pokémon den representerer. Dette kan gjøres ved å sende pokémonens ID som [prop](https://facebook.github.io/react-native/docs/props.html) til komponenten.
 
@@ -180,7 +183,6 @@ export default App;
 
 **Din oppgave:** Lag en enkel routing slik at man kan navigere mellom liste- og detalje-visning.
 
-Tips: 
+Tips:
 * Man endrer på state ved å bruke funksjonen [setState](https://facebook.github.io/react-native/docs/state.html)
 * Man kan sende med funksjoner som [props](https://facebook.github.io/react-native/docs/props.html) til komponenter. For eksempel kan det være lurt å bytte ut `onPress`-funksjonen du skrev i oppgave 2.6 med en som bruker `setState`. :wink:
-
