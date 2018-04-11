@@ -115,7 +115,7 @@ render() {
 
 :trophy: **Din oppgave:** Legg inn bilder av pokémon i firkantene
 
-I hver av firkantene skal vi nå ha et bilde. Da kan du bruke [Image-komponenten](https://facebook.github.io/react-native/docs/image.html) til React Native. URL til bilder er på dette formatet: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{ID}.JPG`, der du bytter ut `{ID}` med pokémonens ID.
+I hver av firkantene skal vi nå ha et bilde. Da kan du bruke [Image-komponenten](https://facebook.github.io/react-native/docs/image.html) til React Native. URL til bilder er på dette formatet: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{ID}.png`, der du bytter ut `{ID}` med pokémonens ID.
 
 ### 2.6 Håndtere trykk
 
