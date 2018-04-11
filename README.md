@@ -191,7 +191,15 @@ hva som skal vises i [state](https://facebook.github.io/react-native/docs/state.
 ```
 App.js
 class App extends React.Component {
-  ...
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      route: "List",
+      pokeId: null
+    };
+  }
+  
   render() {
     if (this.state.route === 'List') {
       // return list
