@@ -143,8 +143,7 @@ informasjon om pokemonen med id 1 (Bulbasaur).
 fetch("http://pokeapi.co/api/v2/pokemon/1");
 ```
 
-:trophy: **Din oppgave:** Du skal nå lage en komponent som viser frem informasjon om en pokemon basert på id. Feks. ved å gjøre et fetch-kall i
-`componentDidMount`.
+:trophy: **Din oppgave:** Du skal nå lage en komponent som viser frem informasjon om en pokemon basert på id. Feks. ved å gjøre et fetch-kall i `componentDidMount`. Forslag til ting du kan vise er navn, type, vekt, og et større bilde av pokémonen. 
 
 Du kan kopiere eksempelkoden under i en ny fil som heter `PokeDetails.js`, og importere denne i `App.js` ved å legge `import PokeDetails from './PokeDetails` på øverste linje i `App.js`.
 
