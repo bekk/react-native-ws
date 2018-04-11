@@ -143,8 +143,10 @@ informasjon om pokemonen med id 1 (Bulbasaur).
 fetch("http://pokeapi.co/api/v2/pokemon/1");
 ```
 
-:trophy: **Din oppgave:** Du skal nå lage et komponent som viser frem informasjon om en pokemon basert på id. Feks. ved å gjøre et fetch-kall i
+:trophy: **Din oppgave:** Du skal nå lage en komponent som viser frem informasjon om en pokemon basert på id. Feks. ved å gjøre et fetch-kall i
 `componentDidMount`.
+
+Du kan kopiere eksempelkoden under i en ny fil som heter `PokeDetails.js`, og importere denne i `App.js` ved å legge `import PokeDetails from './PokeDetails` på øverste linje i `App.js`.
 
 ```
 class PokeDetails extends React.Component {
@@ -175,7 +177,7 @@ class PokeDetails extends React.Component {
 export default PokeDetails;
 ```
 
-:heavy_exclamation_mark: Enn så lenge kan du kommentere ut innholdet av `render` i `Àpp.js` og erstatte det med det nye kompnentet du skal lage.
+:heavy_exclamation_mark: Enn så lenge kan du kommentere ut innholdet av `render` i `Àpp.js` og erstatte det med `<PokeDetails pokeId={1} />`
 
 
 Tips:
