@@ -41,6 +41,8 @@ Bytt ut noe av teksten i `App.js` og lagre fila. Appen skal restarte, og teksten
 
 I utviklermenyen finner du også noe som heter _Debug JS Remotely_. Trykk på denne. En nettside vil åpne seg. Du kan nå åpne utviklerkonsollen på denne sida for å se logger fra appen din. I Chrome kan du trykke ALT+CMD+i for å få opp denne.
 
+**Din oppgave:** Bruk [`console.log`](https://developer.mozilla.org/en-US/docs/Web/API/Console/log) til å skrive ut "Hello world!" (eller noe annet), og sjekk at det dukker opp i nettleseren din.
+
 Da skal du være veldig klar til å starte på din egen PokéDex!
 
 ## 2 PokeList
