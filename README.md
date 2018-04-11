@@ -143,7 +143,7 @@ informasjon om pokemonen med id 1 (Bulbasaur).
 fetch("http://pokeapi.co/api/v2/pokemon/1");
 ```
 
-:trophy: **Din oppgave:** Du skal nå lage en komponent som viser frem informasjon om en pokemon basert på id. Feks. ved å gjøre et fetch-kall i `componentDidMount`. Forslag til ting du kan vise er navn, type, vekt, og et større bilde av pokémonen. 
+:trophy: **Din oppgave:** Du skal nå lage en komponent som viser frem informasjon om en pokemon basert på id. Feks. ved å gjøre et fetch-kall i `componentDidMount`. Forslag til ting du kan vise er navn, type, vekt, og et større bilde av pokémonen.
 
 Du kan kopiere eksempelkoden under i en ny fil som heter `PokeDetails.js`, og importere denne i `App.js` ved å legge `import PokeDetails from './PokeDetails` på øverste linje i `App.js`.
 
@@ -190,17 +190,18 @@ kunne trykke på en pokemon i listen og få opp informasjon om denne. Vi skal gj
 hva som skal vises i [state](https://facebook.github.io/react-native/docs/state.html). På denne måten kan vi sjekke hva vi skal vise til brukeren slik som nedenfor.
 
 ```
-App.js
+// App.js
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      pokemonIds: Array(150).fill().map((e,i) => i + 1),
       route: "List",
       pokeId: null
     };
   }
-  
+
   render() {
     if (this.state.route === 'List') {
       // return list
