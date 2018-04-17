@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css"
+        href="http://bekk.github.io/react-native-workshop/slides/remark-bekk/dist/bekk.css">
+  <title>Title</title>
+  <meta charset="utf-8">
+  <style>
+    .small-img img {
+      width: 250px;
+    }
+    .medium-img img {
+      width: 600px;
+    }
+    .large-img img {
+      width: 700px;
+    }
+    .full-img img {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+<textarea id="source">
+
+class: front-page
+
+# React Native
+## Workshop
+
+Fagdag
+
+18.04.2018
+---
+class: agenda
+
+# Agenda
+
+* Intro
+* Syntax og styling
+
+---
+# React Native
+
+* Samme design som React
+
+* Mye likt
+
+  * JSX
+
+  * Komponenter
+
+  * state
+
+  * props
+
+
+* Native-komponenter istedenfor web-komponenter
+
+* ..og en del andre ting
+---
+# Hvordan fungerer det
+Samme grafiske byggesteiner som iOS og Android
+
+
+...satt sammen med React og JavaScript
+
+.center[![Right-aligned image](./images/native_component.jpg)]
+
+---
+class: cols two
+
+# Native feel
+
+
+Vises forskjellig på iOS og Android
+.col[
+  .small-img[![](images/android.png)]
+]
+.col[
+  .small-img[![](images/ios.png)]
+]
+---
+# Hello world!
+
+```html-javascript
+import React, { Component } from "react";
+import { AppRegistry, Text } from "react-native";
+
+export default class HelloWorldApp extends Component {
+  render() {
+    return (
+      <Text>Hello world!</Text>
+    );
+  }
+}
+
+AppRegistry.registerComponent("HelloWorldProject",
+  () => HelloWorldApp);
+```
+* `index.ios.js`
+* `index.android.js`
+---
+# Komponenter
+Komponenter lar deg splitte brukergrensesnittet i uavhengige, gjenbrukbare biter.
+
+Alt du ser på skjermen er en eller annen komponent. Enten en
+
+* komponent du har laget selv
+* innebygd komponent
+
+Må inneholde en `render`-metode.
+
+---
+# innebygde komponenter
+Flere innebygde komponenter
+* `<View/>`
+  * tilsvarer `<div/>`
+* `<Text/>`
+  * tilsvarer `<p/>`
+* `<Image/>`
+  * tilsvarer `<img/>`
+
+Utfyllende oversikt: https://facebook.github.io/react-native/docs/components-and-apis.html
+
+---
+# Tilpasse komponenter
+
+Det er to typer data som påvirker en komponent i React Native: `props` og `state`
+
+`props`
+  * Satt av foreldrekomponenten
+
+`state`
+  * Satt av seg selv
+---
+# props
+```html-javascript
+class Greeting extends Component {
+  render() {
+    return (
+      <Text>Hello {this.props.name}!</Text>
+    );
+  }
+}
+
+export default class LotsOfGreetings extends Component {
+  render() {
+    return (
+      <View>
+        <Greeting name="Sigurd"/>
+        <Greeting name="Svein"/>
+        <Greeting name="Lap"/>
+        <Greeting name="Nemanja"/>
+      </View>
+    );
+  }
+}
+```
+---
+# state
+```html-javascript
+export default class DisplayTextInput extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {text: ''};
+  }
+
+  render() {
+    return (
+      <View>
+        <TextInput
+          placeholder="Skriv her.."
+          onChangeText={(text) => this.setState({text})}
+        />
+        <Text>
+          { this.state.text }
+        </Text>
+      </View>
+    );
+  }
+}
+```
+---
+# Ingen CSS, kun JavaScript
+```css
+.element {
+  background-color: red;
+  width: 20px;
+  border: 1px solid black;
+}
+```
+
+...blir til
+
+```javascript-html
+{
+  element: {
+    backgroundColor: 'red',
+    width: 20,
+    borderColor: 'black',
+    borderWidth: 1
+  }
+}
+```
+---
+# Vent... ingen CSS?
+
+Inspirert av CSS
+
+...men med noen unntak
+
+* camel case
+```html
+background-color = backgroundColor
+```
+
+* ingen units
+```html
+margin: 20px = margin: 20
+```
+
+* stringer
+```html
+text-align: center = textAlign: 'center'
+```
+---
+# StyleSheet.create
+## Man setter styling via style-prop
+```javascript-html
+<Text style={{ color: 'red' }}>Jeg er rød</Text>
+  ```
+
+## Kan bli uoversiktlig i store komponenter
+
+
+```javascript-html
+import { StyleSheet } from "react-native"
+...
+<Text style={ styles.red }>Jeg er rød</Text>
+...
+
+const styles = StyleSheet.create({
+  red: {
+    color: 'red'
+  }
+})
+```
+---
+# Cascading
+Styling arves ikke.
+```javascript-html
+<View style={{ color: 'red' }} >
+  <Text>Jeg er ikke rød</Text>
+  </View>
+  ```
+
+---
+# Cascading
+
+Men du kan kombinere styles.
+```javascript-html
+<View>
+  <Text style={ [styles.red, styles.centered] }>
+    Jeg er rød og sentrert
+  </Text>
+</View>
+...
+const styles = StyleSheet.create({
+  red: {
+    color: 'orange',
+  },
+  centered: {
+    textAlign: 'center',
+  },
+})
+```
+---
+class: cols two
+# Flex
+
+.col[
+```javascript-html
+render() {
+  return (
+    <View style={{flex: 1}}>
+      <View style={{
+            flex: 1,
+            backgroundColor: 'powderblue'
+      }}/>
+      <View style={{
+            flex: 2,
+            backgroundColor: 'skyblue'
+      }}/>
+      <View style={{
+            flex: 3,
+            backgroundColor: 'steelblue'
+      }}/>
+    </View>);
+}
+```
+]
+.col[
+Tillater en komponent å utvide og krympe dynamisk basert på tilgjengelig plass.
+
+.small-img[![](images/flex.png)]
+]
+---
+class: cols two
+# flexDirection
+
+.col[
+```javascript-html
+render() {
+  return (
+    <View style={{
+          flex: 1,
+          flexDirection: 'row'}}>
+      <View style={{
+            width: 50, height: 50,
+            backgroundColor: 'powderblue'}} />
+      <View style={{
+            width: 50, height: 50,
+            backgroundColor: 'skyblue'}} />
+      <View style={{
+            width: 50, height: 50,
+            backgroundColor: 'steelblue'}} />
+  </View>
+  );
+}
+```
+]
+.col[
+Bestemmer primæraksen for barne-komponentene.
+
+.small-img[![](images/flexDirection.png)]
+]
+---
+class: cols two
+# justifyContent
+
+.col[
+```javascript-html
+render() {
+  return (
+    <View style={{
+          flex: 1,
+          flexDirection: 'column',
+      justifyContent: 'space-between',
+    }}>
+      <View style={{
+            width: 50, height: 50,
+            backgroundColor: 'powderblue'}} />
+      <View style={{
+            width: 50, height: 50,
+            backgroundColor: 'skyblue'}} />
+      <View style={{
+            width: 50, height: 50,
+            backgroundColor: 'steelblue'}} />
+  </View>
+  )}
+```
+]
+.col[
+Bestemmer distribusjonen av komponenter langs primæraksen.
+
+.small-img[![](images/justifyContent.png)]
+]
+---
+class: cols two
+# alignItems
+.col[
+```javascript-html
+render() {
+  return (
+    <View style={{
+          flex: 1,
+          justifyContent: 'center',
+      alignItems: 'center',
+    }}>
+      <View style={{
+            width: 50, height: 50,
+            backgroundColor: 'powderblue'}} />
+      <View style={{
+            width: 50, height: 50,
+            backgroundColor: 'skyblue'}} />
+      <View style={{
+            width: 50, height: 50,
+            backgroundColor: 'steelblue'}} />
+  </View>
+  )}
+```
+]
+.col[
+Bestemmer distribusjonen komponenter langs sekundæraksen.
+
+.small-img[![](images/alignItems.png)]
+]
+---
+class: middle left
+## Oppgaver
+
+```bash
+git clone https://github.com/bekk/react-native-workshop-v2
+git checkout 1-intro
+```
+
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js">
+</script>
+<script>
+  var slideshow = remark.create(
+    {
+      ratio: '16:9',
+      highlightLanguage: 'javascript',
+      highlightStyle: 'solarized-dark',
+    }
+  );
+</script>
+</body>
+</html>
