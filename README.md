@@ -222,3 +222,4 @@ export default App;
 Tips:
 * Man endrer på state ved å bruke funksjonen [setState](https://facebook.github.io/react-native/docs/state.html)
 * Man kan sende med funksjoner som [props](https://facebook.github.io/react-native/docs/props.html) til komponenter. For eksempel kan det være lurt å bytte ut `onPress`-funksjonen du skrev i oppgave 2.6 med en som bruker `setState`. :wink:
+* I en større og/eller mer seriøs app ville man nok brukt et bibliotek for håndtering av navigering. [React Navigation](https://reactnavigation.org/docs/getting-started.html) er det klart mest populære alternativet i dag.
