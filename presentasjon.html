@@ -164,6 +164,7 @@ export default class DisplayTextInput extends Component {
       <View>
         <TextInput
           placeholder="Skriv her.."
+          value={this.state.text}
           onChangeText={(text) => this.setState({text})}
         />
         <Text>
