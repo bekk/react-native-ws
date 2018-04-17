@@ -10,7 +10,8 @@ Alternativt: Hvis du heller ønsker å kjøre applikasjonen i en simulator følg
 
 # Oppgaver
 
-Vi skal lage PokeDex!
+Vi skal lage Pokédex! Vet du ikke hva det er? Vi siterer [Wikipedia](https://no.wikipedia.org/wiki/Pokédex): 
+> Pokédex er et hjelpemiddel i Pokémon-spillene som viser en liste over ulike Pokémoner, deres data, lokaliteter og annen informasjon om dem.
 
 ## 1 Komme i gang
 
