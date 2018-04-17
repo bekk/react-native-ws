@@ -65,8 +65,6 @@ Samme grafiske byggesteiner som iOS og Android
 
 ...satt sammen med React og JavaScript
 
-.center[![Right-aligned image](https://github.com/bekk/react-native-workshop-v2/raw/master/images/native_component.png)]
-
 ---
 class: cols two
 
@@ -84,6 +82,8 @@ Vises forskjellig på iOS og Android
 # Hello world!
 
 ```html-javascript
+// App.js
+
 import React, { Component } from "react";
 import { AppRegistry, Text } from "react-native";
 
@@ -95,8 +95,6 @@ export default class HelloWorldApp extends Component {
   }
 }
 
-AppRegistry.registerComponent("HelloWorldProject",
-  () => HelloWorldApp);
 ```
 ---
 # Komponenter
@@ -254,13 +252,11 @@ https://github.com/bekk/react-native-ws
 <script src="https://remarkjs.com/downloads/remark-latest.min.js">
 </script>
 <script>
-  var slideshow = remark.create(
-    {
-      ratio: '16:9',
-      highlightLanguage: 'javascript',
-      highlightStyle: 'solarized-dark',
-    }
-  );
+var slideshow = remark.create({
+  ratio: "16:9",
+  highlightLanguage: "javascript",
+  highlightStyle: "solarized-dark"
+});
 </script>
 </body>
 </html>
