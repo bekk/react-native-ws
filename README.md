@@ -223,3 +223,11 @@ Tips:
 * Man endrer på state ved å bruke funksjonen [setState](https://facebook.github.io/react-native/docs/state.html)
 * Man kan sende med funksjoner som [props](https://facebook.github.io/react-native/docs/props.html) til komponenter. For eksempel kan det være lurt å bytte ut `onPress`-funksjonen du skrev i oppgave 2.6 med en som bruker `setState`. :wink:
 * I en større og/eller mer seriøs app ville man nok brukt et bibliotek for håndtering av navigering. [React Navigation](https://reactnavigation.org/docs/getting-started.html) er det klart mest populære alternativet i dag.
+
+
+### Ekstraoppgaver
+Ferdig allerede? Her er noen forslag på ting du kan gjøre videre med pokedexen din.
+* Bruk [ActivityIndicator](https://facebook.github.io/react-native/docs/activityindicator.html) i PokeDetails for å vise brukeren at man henter data.
+* Legg til nummeret til hver pokémon på/ved bildet dens i lista.
+* Legg til mulighet for å favorittmerke en pokémon. En favorittpokémon kan for eksempel vises øverst i lista, gjerne med litt spesiell styling eller i en egen seksjon.
+* Sorter/filtrer lista basert på egenskaper ved pokémonene. For eksempel etter type (gress/ild), styrke eller kjønn. Her er du avhengig av å hente data om alle pokémon fra starten av, i stedet for å kun hente data om én pokémon ved åpning av detaljsiden.
