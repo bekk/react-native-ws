@@ -13,7 +13,7 @@ Vi skal lage Pokédex! Vet du ikke hva det er? Vi siterer [Wikipedia](https://no
 
 ## 1 Komme i gang
 
-For å komme fort i gang med React Native-appen vår, skal vi bruke `react-native-cli`-verktøyet som du skal ha installert globalt under Oppsett-fasen. Dette verktøyet genererer en enkel app for oss, så vi har et godt utgangspunkt fra starten av. For å installere dette, kjør følgende:
+For å komme fort i gang med React Native-appen vår, skal vi bruke `react-native-cli`-verktøyet som du skal ha installert globalt under Oppsett-fasen. Dette verktøyet genererer en enkel app for oss, så vi har et godt utgangspunkt fra starten av.
 
 ### 1.1 Kjøre opp appen
 
@@ -27,9 +27,7 @@ En utviklingsserver vil starte, og appen vil starte på din simulator eller fysi
 
 ### 1.2 Utviklingsmiljø
 
-Bytt ut noe av teksten i `App.js` og lagre fila. Appen skal restarte, og teksten endre seg automatisk. Kult? Dette kalles _Live Reload_.
-
-Åpne utviklermenyen (rist på telefonen eller CMD+D på iPhone-simulator eller CMD+M på Android-emulator). Du vil få opp en meny. Her vil du se at du kan slå av Live Reload. Prøv det, og slå heller på _Hot Reloading_. Da skal tekst endre seg uten at hele appen lastes på nytt.
+Åpne utviklermenyen (rist på telefonen eller CMD+D på iPhone-simulator eller CMD+M på Android-emulator). Du vil få opp en meny. Her vil du se at du kan slå på noe som heter Hot Reloading ("Enable Hot Reloading"). Slå på det. Bytt ut noe av teksten i `App.js` og lagre fila. Appen skal skifte ut teksten i appen automatisk, uten reload. Kult? Du kan også prøve ut _Live Reload_. Da vil appen lastes på nytt ved endringer.
 
 I utviklermenyen finner du også noe som heter _Debug JS Remotely_. Trykk på denne. En nettside vil åpne seg. Du kan nå åpne utviklerkonsollen på denne sida for å se logger fra appen din. I Chrome kan du trykke ALT+CMD+i for å få opp denne.
 
