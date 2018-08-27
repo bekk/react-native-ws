@@ -2,10 +2,6 @@
 
 En introduksjon til React Native i workshop-form.
 
-# Oppsett
-
-Pass på at du har Node v6 eller nyere installert på datamaskinen din, og følg oppsettet under `Building Projects with Native Code` i [dokumentasjonen til Facebook](https://facebook.github.io/react-native/docs/getting-started.html)
-
 # Oppgaver
 
 Vi skal lage Pokédex! Vet du ikke hva det er? Vi siterer [Wikipedia](https://no.wikipedia.org/wiki/Pokédex): 
@@ -13,9 +9,13 @@ Vi skal lage Pokédex! Vet du ikke hva det er? Vi siterer [Wikipedia](https://no
 
 ## 1 Komme i gang
 
-For å komme fort i gang med React Native-appen vår, skal vi bruke `react-native-cli`-verktøyet som du skal ha installert globalt under Oppsett-fasen. Dette verktøyet genererer en enkel app for oss, så vi har et godt utgangspunkt fra starten av.
+Fra dette avsnittet av tar workshoppen utgangspunkt i at du bruker en ferdig oppsatt Mac. Bruker du din egen maskin, kan du følge instruksene under "Building Projects with Native Code" her: https://facebook.github.io/react-native/docs/getting-started
 
 ### 1.1 Kjøre opp appen
+
+For å komme fort i gang med React Native-appen vår, skal vi bruke `react-native-cli`-verktøyet som allerede skal være installert. Dette verktøyet genererer en enkel app for oss, så vi har et godt utgangspunkt fra starten av.
+
+:trophy: **Din oppgave:** Åpne terminalen og skriv inn følgende:
 
 ```
 react-native init pokedex
@@ -23,13 +23,13 @@ cd pokedex/
 react-native run-ios # eller 'react-native run-android' dersom du kjører Android
 ```
 
-En utviklingsserver vil starte, og appen vil starte på din simulator eller fysiske enhet. Merk at på Mac vil iPhone-simulatoren starte av seg selv, mens Android-emulator må du starte i forkant via Android Studio.
+En utviklingsserver vil starte, en iPhone-simulator vil automatiske åpne seg, og appen din vil starte på den.
 
 ### 1.2 Utviklingsmiljø
 
-Åpne utviklermenyen (rist på telefonen eller CMD+D på iPhone-simulator eller CMD+M på Android-emulator). Du vil få opp en meny. Her vil du se at du kan slå på noe som heter Hot Reloading ("Enable Hot Reloading"). Slå på det. Bytt ut noe av teksten i `App.js` og lagre fila. Appen skal skifte ut teksten i appen automatisk, uten reload. Kult? Du kan også prøve ut _Live Reload_. Da vil appen lastes på nytt ved endringer.
+Åpne utviklermenyen (Cmd+D på simulatoren). Du vil få opp en meny. Her vil du se at du kan slå på noe som heter Hot Reloading ("Enable Hot Reloading"). Gjør det. Bytt ut noe av teksten i `App.js` og lagre fila. Appen skal skifte ut teksten i appen automatisk, uten reload. Kult? Du kan også prøve ut _Live Reload_. Da vil appen lastes på nytt ved endringer.
 
-I utviklermenyen finner du også noe som heter _Debug JS Remotely_. Trykk på denne. En nettside vil åpne seg. Du kan nå åpne utviklerkonsollen på denne sida for å se logger fra appen din. I Chrome kan du trykke ALT+CMD+i for å få opp denne.
+I utviklermenyen finner du også noe som heter _Debug JS Remotely_. Trykk på denne. En nettside vil åpne seg. Du kan nå åpne utviklerkonsollen (Alt+Cmd+I) på denne sida for å se logger fra appen din.
 
 :trophy: **Din oppgave:** Bruk [`console.log`](https://developer.mozilla.org/en-US/docs/Web/API/Console/log) til å skrive ut "Hello world!" (eller noe annet), og sjekk at det dukker opp i nettleseren din.
 
@@ -45,11 +45,11 @@ I React Native skriver vi stiler i JavaScript. Det ligner veldig på CSS, men er
 
 Vi begynner med én firkant, og du kan ta utgangspunkt i `App.js`.
 
-:trophy: **Din oppgave:** Bruk et [`View`](https://facebook.github.io/react-native/docs/view.html) til å lage en grå, kvadratisk firkant.
+:trophy: **Din oppgave:** Bruk et [`View`](https://facebook.github.io/react-native/docs/view.html) til å lage en grå, kvadratisk firkant midt på skjermen.
 
 ### 2.2 Layout
 
-Nå har du sikkert en grå, passe stor firkant midt på skjermen. Neste oppgave blir å lage rutenettet med mange firkanter i. React Native sine stiler bruker Flexbox-systemet fra CSS aktivt. Vi kan bruke det til å lage et rutenett, omtrent slik:
+Nå har du sikkert en grå, passe stor firkant midt på skjermen. Neste oppgave blir å lage rutenettet med mange slike firkanter i. React Native sine stiler bruker Flexbox-systemet fra CSS aktivt. Vi kunne brukt det til å lage et rutenett, omtrent slik:
 
 ```
 render() {
@@ -91,11 +91,8 @@ FlatList er en komponent som har to påkrevde props. `data` er en liste med ting
 Tips: For å ha et sett med data å jobbe med, kan du lage en konstruktør over render-metoden, med en state som inneholder en liste med pokémon-ID-er. Disse ID-ene er tall fra 1 og oppover.
 
 ```
-constructor() {
-  super()
-  this.state = {
-    pokemonIds: Array(150).fill().map((e,i) => i + 1)
-  }
+state = {
+  pokemonIds: Array(150).fill().map((e,i) => i + 1)
 }
 
 render() {
@@ -141,12 +138,8 @@ Du kan kopiere eksempelkoden under i en ny fil som heter `PokeDetails.js`, og im
 import React from 'react'
 
 class PokeDetails extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      pokemon: null
-    };
+  this.state = {
+    pokemon: null
   }
 
   componentDidMount() {
@@ -184,16 +177,12 @@ hva som skal vises i [state](https://facebook.github.io/react-native/docs/state.
 ```
 // App.js
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      pokemonIds: Array(150).fill().map((e,i) => i + 1),
-      route: "List",
-      pokeId: null
-    };
+  state = {
+    pokemonIds: Array(150).fill().map((e,i) => i + 1),
+    route: "List",
+    pokeId: null
   }
-
+    
   render() {
     if (this.state.route === 'List') {
       // return list
