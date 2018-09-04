@@ -118,7 +118,9 @@ Du kan lese mer om håndtering av trykk her: https://facebook.github.io/react-na
 Vi har nå laget en applikasjon som lister ut alle pokemonene og ønsker nå å vise frem mer informasjon om hver pokemon.
 Det finnes selvfølgelig et [pokeapi](https://pokeapi.co/) med denne informasjonen. Besøk siden og bli kjent med apiet.
 
-Vi skal bruke `/pokemon/{id}` endepunktet som gir oss informasjon om en pokemon med en gitt `id`.
+Vi skal bruke `/pokemon/{id}`-endepunktet som gir oss informasjon om en pokemon med en gitt `id`.
+
+PS! Bruk https://poke-api.now.sh/ i stedet for http://pokeapi.co/api/v2/
 
 ### 3.1 Hente data.
 
@@ -127,7 +129,7 @@ For å gjøre et kall gir man rett og slett en `url` som argument til `fetch` so
 informasjon om pokemonen med id 1 (Bulbasaur).
 
 ```javascript
-fetch("http://pokeapi.co/api/v2/pokemon/1");
+fetch("https://poke-api.now.sh/pokemon/1");
 ```
 
 :trophy: **Din oppgave:** Du skal nå lage en komponent som viser frem informasjon om en pokemon basert på id. Feks. ved å gjøre et fetch-kall i `componentDidMount`. Forslag til ting du kan vise er navn, type, vekt, og et større bilde av pokémonen.
@@ -145,7 +147,7 @@ class PokeDetails extends React.Component {
   componentDidMount() {
     const { pokeId } = this.props;
     if (pokeId) {
-      fetch(`http://pokeapi.co/api/v2/pokemon/${pokeId}/`)
+      fetch(`https://poke-api.now.sh/pokemon/${pokeId}/`)
         .then(res => res.json())
         .then(data => {
           this.setState({ pokemon: data });
