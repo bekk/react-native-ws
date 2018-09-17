@@ -144,7 +144,7 @@ Du kan kopiere eksempelkoden under i en ny fil som heter `PokeDetails.js`, og im
 import React from 'react'
 
 class PokeDetails extends React.Component {
-  this.state = {
+  state = {
     pokemon: null
   }
 
