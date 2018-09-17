@@ -47,9 +47,21 @@ Vi begynner med én firkant, og du kan ta utgangspunkt i `App.js`.
 
 :trophy: **Din oppgave:** Bruk et [`View`](https://facebook.github.io/react-native/docs/view.html) til å lage en grå, kvadratisk firkant midt på skjermen.
 
-### 2.2 Layout
+### 2.2 Bilde
 
-Nå har du sikkert en grå, passe stor firkant midt på skjermen. Neste oppgave blir å lage rutenettet med mange slike firkanter i. React Native sine stiler bruker Flexbox-systemet fra CSS aktivt. Vi kunne brukt det til å lage et rutenett, omtrent slik:
+:trophy: **Din oppgave:** Legg inn et bilde av en pokémon i firkanten
+
+I hver av firkantene skal vi ha et bilde av en pokémon. Vi begynner med å legge et bilde i den ene du har laget før vi lager mange firkanter. Du kan bruke [Image-komponenten](https://facebook.github.io/react-native/docs/image.html) til React Native. URL til bilder er på dette formatet: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{ID}.png`, der du bytter ut `{ID}` med pokémonens ID. Prøv f.eks. med 1: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png`
+
+Tips: Det kan være lurt å ha Image-komponenten som barn av View-komponenten du brukte til firkanten: `<View ...><Image ... /></View>`
+
+Tips 2: Image-komponenten _må_ ha en style-prop med `height` og `width` definert.
+
+### 2.3 Layout
+
+Nå har du sikkert en enslig pokémon midt på skjermen. Neste oppgave blir å lage rutenettet med mange slike firkanter i. React Native sine stiler bruker Flexbox-systemet fra CSS aktivt. Vi kunne brukt det til å lage et rutenett, men React Native gir oss en svært praktisk komponent for dette formålet, nemlig [FlatList](https://facebook.github.io/react-native/docs/flatlist.html)!
+
+Dersom vi kun hadde holdt oss til Flexbox, kunne vi gått for noe à la dette:
 
 ```
 render() {
@@ -82,9 +94,7 @@ const styles = StyleSheet.create({
 });
 ```
 
-:heavy_exclamation_mark: Men, React Native gir oss en svært praktisk komponent for dette formålet, nemlig [FlatList](https://facebook.github.io/react-native/docs/flatlist.html)!
-
-:trophy: **Din oppgave:** Gjør deg kjent med FlatList-komponenten og prøv å bruke denne til å lage et fint rutenett med grå firkanter.
+:trophy: **Din oppgave:** Gjør deg kjent med [FlatList](https://facebook.github.io/react-native/docs/flatlist.html)-komponenten og prøv å bruke denne til å lage et fint rutenett av firkanter.
 
 FlatList er en komponent som har to påkrevde props. `data` er en liste med ting, og `renderItem` er en funksjon som definerer hvordan hver av disse tingene skal rendres. I forrige oppgave lagde du en firkant. Den kan du kanskje returnere fra din `renderItem`-funksjon. FlatList har også andre nyttige props. Legg merke til blant annet `numColumns` og `onRefresh`.
 
@@ -99,13 +109,7 @@ render() {
   ...
 ```
 
-### 2.5. Bilde
-
-:trophy: **Din oppgave:** Legg inn bilder av pokémon i firkantene
-
-I hver av firkantene skal vi nå ha et bilde. Da kan du bruke [Image-komponenten](https://facebook.github.io/react-native/docs/image.html) til React Native. URL til bilder er på dette formatet: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{ID}.png`, der du bytter ut `{ID}` med pokémonens ID.
-
-### 2.6 Håndtere trykk
+### 2.4 Håndtere trykk
 
 Gratulerer med en fin oversikt over pokémoner! Men vi ønsker å få til litt mer når man trykker på en av dem. Da må vi gjøre firkantene våre trykkbare. I React Native bruker man Touchable-komponenter for å håndtere trykk. For å registrere trykk på en komponent, må den være barn av en slik Touchable-komponent. Ved trykk vil da `onPress`-funksjonen bli kalt.
 
