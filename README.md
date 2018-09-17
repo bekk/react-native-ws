@@ -18,9 +18,9 @@ For å komme fort i gang med React Native-appen vår, skal vi bruke `react-nativ
 :trophy: **Din oppgave:** Åpne terminalen og skriv inn følgende:
 
 ```
-react-native init pokedex
-cd pokedex/
-react-native run-ios # eller 'react-native run-android' dersom du kjører Android
+react-native init pokedex --version 0.56.0
+cd pokedex
+react-native run-ios
 ```
 
 En utviklingsserver vil starte, en iPhone-simulator vil automatiske åpne seg, og appen din vil starte på den.
