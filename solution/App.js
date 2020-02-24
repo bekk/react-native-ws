@@ -1,46 +1,43 @@
-import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
-import PokeList from "./components/PokeList";
-import PokeDetails from "./components/PokeDetails";
+import React, { useState } from 'react'
+import { StyleSheet, Text, View, Button } from 'react-native'
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
+import List from './components/List'
+import Details from './components/Details'
 
-    this.state = {
-      route: "List",
-      id: 0
-    };
+function App() {
+  const [route, setRoute] = useState('List')
+  const [id, setId] = useState(0)
+
+  const updateState = (route, id) => {
+    setRoute(route)
+    setId(id)
   }
 
-  render() {
-    const { route, id } = this.state;
-
-    if (route === "List") {
-      return (
-        <View style={styles.container}>
-          <PokeList
-            handleClick={id => this.setState({ route: "Details", id })}
-          />
-        </View>
-      );
-    } else if (route === "Details") {
-      return (
-        <View style={styles.container}>
-          <PokeDetails
-            id={id}
-            handleClick={() => this.setState({ route: "List" })}
-          />
-        </View>
-      );
-    }
+  if (route === 'Details') {
+    return (
+      <View style={ styles.container }>
+        <Details
+          id={ id }
+          handleClick={ id => updateState('List', id) }
+        />
+      </View>
+    )
   }
+
+  return (
+    <View style={ styles.container }>
+      <List handleClick={ id => updateState('Details', id) } />
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 50,
+    alignItems: 'center'
     flex: 1,
-    alignItems: "center"
+    paddingVertical: 80,
   }
-});
+})
+
+
+export default App
