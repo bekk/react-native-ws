@@ -27,7 +27,7 @@ En utviklingsserver vil starte, en iPhone-simulator vil automatiske åpne seg, o
 
 ### 1.2 Utviklingsmiljø
 
-Åpne utviklermenyen (Cmd+D på simulatoren). Du vil få opp en meny. Her vil du se at du kan slå på noe som heter _Debug (JS Remotely)_. Trykk på denne. En nettside vil åpne seg. Du kan nå åpne utviklerkonsollen (Alt+Cmd+I) på denne sida for å se logger fra appen din. React Native har noe som heter _Hot Reloading_. Det er allerede aktivert (by default), så det slipper du å aktivere. Bytt ut noe av teksten i `App.js` og lagre fila. Appen skal skifte ut teksten i appen automatisk, uten reload. Kult?
+Åpne utviklermenyen (Cmd+D på simulatoren). Du vil få opp en meny. Her vil du se at du kan slå på noe som heter _Debug_. Trykk på denne. En nettside vil åpne seg. Du kan nå åpne utviklerkonsollen (Alt+Cmd+I) på denne sida for å se logger fra appen din. React Native har noe som heter _Fast Refresh_ (samme som _Hot Reloading_). Det er allerede aktivert (by default), så det slipper du å aktivere. Bytt ut noe av teksten i `App.js` og lagre fila. Appen skal skifte ut teksten i appen automatisk, uten reload. Kult?
 
 :trophy: **Din oppgave:** Bruk [`console.log`](https://developer.mozilla.org/en-US/docs/Web/API/Console/log) til å skrive ut "Hello world!" (eller noe annet), og sjekk at det dukker opp i nettleseren din.
 
@@ -97,7 +97,7 @@ FlatList er en komponent som har to påkrevde props. `data` er en liste med ting
 Tips: For å ha et sett med data å jobbe med, kan du lage en variabel som inneholder en liste med pokémon-ID-er. Disse ID-ene er tall fra 1 og oppover.
 
 ```
-const pokemonIds = pokemonIds: Array(150).fill().map((e,i) => i + 1)
+const pokemonIds = Array(150).fill().map((e,i) => i + 1)
 ```
 
 ### 2.4 Håndtere trykk
@@ -115,8 +115,6 @@ Det finnes selvfølgelig et [pokeapi](https://pokeapi.co/) med denne informasjon
 
 Vi skal bruke `/pokemon/{id}`-endepunktet som gir oss informasjon om en pokemon med en gitt `id`.
 
-PS! Bruk https://poke-api.now.sh/ i stedet for http://pokeapi.co/api/v2/
-
 ### 3.1 Hente data.
 
 React Native bruker [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) til å gjøre nettverkskall.
@@ -124,7 +122,7 @@ For å gjøre et kall gir man rett og slett en `url` som argument til `fetch` so
 informasjon om pokemonen med id 1 (Bulbasaur).
 
 ```javascript
-fetch("https://poke-api.now.sh/pokemon/1");
+fetch("https://pokeapi.co/api/v2/pokemon/1");
 ```
 
 :trophy: **Din oppgave:** Du skal nå lage en komponent som viser frem informasjon om en pokemon basert på id. Feks. ved å gjøre et fetch-kall i `useEffect` (samme som `componentDidMount`). Forslag til ting du kan vise er navn, type, vekt, og et større bilde av pokémonen.
@@ -132,22 +130,34 @@ fetch("https://poke-api.now.sh/pokemon/1");
 Du kan kopiere eksempelkoden under i en ny fil som heter `PokeDetails.js`, og importere denne i `App.js` ved å legge `import PokeDetails from './PokeDetails` på øverste linje i `App.js`.
 
 ```
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { SafeAreaView, View, Text } from 'react-native'
 
 function PokeDetails({ pokeId }) {
   const [pokemon, setPokemon] = useState(null)
 
   useEffect(() => {
     if (pokeId) {
-      fetch(`https://poke-api.now.sh/pokemon/${pokeId}/`)
+      fetch(`https://pokeapi.co/api/v2/pokemon/${pokeId}/`)
         .then(res => res.json())
         .then(data => setPokemon(data))
         .catch(err => console.log(err))
     }
   }, [pokeId])
 
+  if (!pokemon) {
+    return (
+      <SafeAreaView>
+        <Text>Ingen Pokémon-data funnet ennå!</Text>
+      </SafeAreaView>
+    )
+  }
+
+  // returner ønskede detaljer
   return (
-    // returner ønskede detaljer
+    <SafeAreaView>
+      <Text>Name: </Text>
+    </SafeAreaView>
   )
 }
 
@@ -169,7 +179,7 @@ hva som skal vises i [state](https://reactjs.org/docs/hooks-state.html). På den
 
 ```
 // App.js
-function App() {
+const App = () => {
   const [route, setRoute] = useState('List')
   const [pokeId, setPokeId] = useState(null)
 
