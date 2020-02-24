@@ -4,7 +4,7 @@ En introduksjon til React Native i workshop-form.
 
 # Oppgaver
 
-Vi skal lage Pokédex! Vet du ikke hva det er? Vi siterer [Wikipedia](https://no.wikipedia.org/wiki/Pokédex): 
+Vi skal lage Pokédex! Vet du ikke hva det er? Vi siterer [Wikipedia](https://no.wikipedia.org/wiki/Pokédex):
 > Pokédex er et hjelpemiddel i Pokémon-spillene som viser en liste over ulike Pokémoner, deres data, lokaliteter og annen informasjon om dem.
 
 ## 1 Komme i gang
@@ -18,7 +18,7 @@ For å komme fort i gang med React Native-appen vår, skal vi bruke `react-nativ
 :trophy: **Din oppgave:** Åpne terminalen og skriv inn følgende:
 
 ```
-react-native init pokedex --version 0.56.0
+react-native init pokedex
 cd pokedex
 react-native run-ios
 ```
@@ -27,9 +27,7 @@ En utviklingsserver vil starte, en iPhone-simulator vil automatiske åpne seg, o
 
 ### 1.2 Utviklingsmiljø
 
-Åpne utviklermenyen (Cmd+D på simulatoren). Du vil få opp en meny. Her vil du se at du kan slå på noe som heter Hot Reloading ("Enable Hot Reloading"). Gjør det. Bytt ut noe av teksten i `App.js` og lagre fila. Appen skal skifte ut teksten i appen automatisk, uten reload. Kult? Du kan også prøve ut _Live Reload_. Da vil appen lastes på nytt ved endringer.
-
-I utviklermenyen finner du også noe som heter _Debug JS Remotely_. Trykk på denne. En nettside vil åpne seg. Du kan nå åpne utviklerkonsollen (Alt+Cmd+I) på denne sida for å se logger fra appen din.
+Åpne utviklermenyen (Cmd+D på simulatoren). Du vil få opp en meny. Her vil du se at du kan slå på noe som heter _Debug (JS Remotely)_. Trykk på denne. En nettside vil åpne seg. Du kan nå åpne utviklerkonsollen (Alt+Cmd+I) på denne sida for å se logger fra appen din. React Native har noe som heter _Hot Reloading_. Det er allerede aktivert (by default), så det slipper du å aktivere. Bytt ut noe av teksten i `App.js` og lagre fila. Appen skal skifte ut teksten i appen automatisk, uten reload. Kult?
 
 :trophy: **Din oppgave:** Bruk [`console.log`](https://developer.mozilla.org/en-US/docs/Web/API/Console/log) til å skrive ut "Hello world!" (eller noe annet), og sjekk at det dukker opp i nettleseren din.
 
@@ -64,17 +62,15 @@ Nå har du sikkert en enslig pokémon midt på skjermen. Neste oppgave blir å l
 Dersom vi kun hadde holdt oss til Flexbox, kunne vi gått for noe à la dette:
 
 ```
-render() {
-  return (
-    <View style={styles.container}>
-      <View style={styles.row}>
-        <View style={styles.square}></View>
-        <View style={styles.square}></View>
-        <View style={styles.square}></View>
-      </View>
+return (
+  <View style={ styles.container }>
+    <View style={ styles.row }>
+      <View style={ styles.square } />
+      <View style={ styles.square } />
+      <View style={ styles.square } />
     </View>
-  );
-}
+  </View>
+)
 
 const styles = StyleSheet.create({
   container: {
@@ -86,27 +82,22 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
   },
   square: {
     // Dine stiler her
   }
-});
+})
 ```
 
 :trophy: **Din oppgave:** Gjør deg kjent med [FlatList](https://facebook.github.io/react-native/docs/flatlist.html)-komponenten og prøv å bruke denne til å lage et fint rutenett av firkanter.
 
 FlatList er en komponent som har to påkrevde props. `data` er en liste med ting, og `renderItem` er en funksjon som definerer hvordan hver av disse tingene skal rendres. I forrige oppgave lagde du en firkant. Den kan du kanskje returnere fra din `renderItem`-funksjon. FlatList har også andre nyttige props. Legg merke til blant annet `numColumns` og `onRefresh`.
 
-Tips: For å ha et sett med data å jobbe med, kan du lage en konstruktør over render-metoden, med en state som inneholder en liste med pokémon-ID-er. Disse ID-ene er tall fra 1 og oppover.
+Tips: For å ha et sett med data å jobbe med, kan du lage en variabel som inneholder en liste med pokémon-ID-er. Disse ID-ene er tall fra 1 og oppover.
 
 ```
-state = {
-  pokemonIds: Array(150).fill().map((e,i) => i + 1)
-}
-
-render() {
-  ...
+const pokemonIds = pokemonIds: Array(150).fill().map((e,i) => i + 1)
 ```
 
 ### 2.4 Håndtere trykk
@@ -136,38 +127,34 @@ informasjon om pokemonen med id 1 (Bulbasaur).
 fetch("https://poke-api.now.sh/pokemon/1");
 ```
 
-:trophy: **Din oppgave:** Du skal nå lage en komponent som viser frem informasjon om en pokemon basert på id. Feks. ved å gjøre et fetch-kall i `componentDidMount`. Forslag til ting du kan vise er navn, type, vekt, og et større bilde av pokémonen.
+:trophy: **Din oppgave:** Du skal nå lage en komponent som viser frem informasjon om en pokemon basert på id. Feks. ved å gjøre et fetch-kall i `useEffect` (samme som `componentDidMount`). Forslag til ting du kan vise er navn, type, vekt, og et større bilde av pokémonen.
 
 Du kan kopiere eksempelkoden under i en ny fil som heter `PokeDetails.js`, og importere denne i `App.js` ved å legge `import PokeDetails from './PokeDetails` på øverste linje i `App.js`.
 
 ```
-import React from 'react'
+import React, { useState } from 'react'
 
-class PokeDetails extends React.Component {
-  state = {
-    pokemon: null
-  }
+function PokeDetails({ pokeId }) {
+  const [pokemon, setPokemon] = useState(null)
 
-  componentDidMount() {
-    const { pokeId } = this.props;
+  useEffect(() => {
     if (pokeId) {
       fetch(`https://poke-api.now.sh/pokemon/${pokeId}/`)
         .then(res => res.json())
-        .then(data => {
-          this.setState({ pokemon: data });
-        })
-        .catch(err => console.log(err));
+        .then(data => setPokemon(data))
+        .catch(err => console.log(err))
     }
-  }
+  }, [pokeId])
 
-  render() {
-    // Returner ønskede detaljer.
-  }
+  return (
+    // returner ønskede detaljer
+  )
 }
-export default PokeDetails;
+
+export default PokeDetails
 ```
 
-:heavy_exclamation_mark: Enn så lenge kan du kommentere ut innholdet av `render` i `Àpp.js` og erstatte det med `<PokeDetails pokeId={1} />`
+:heavy_exclamation_mark: Enn så lenge kan du kommentere ut innholdet av `return` i `Àpp.js` og erstatte det med `<PokeDetails pokeId={1} />`
 
 
 Tips:
@@ -178,35 +165,32 @@ Tips:
 
 Applikasjonen vår kan både liste ut alle pokemonene og vise detaljer om en. Det ville derfor vært naturlig at man
 kunne trykke på en pokemon i listen og få opp informasjon om denne. Vi skal gjøre dette ved å holde på informasjon om
-hva som skal vises i [state](https://facebook.github.io/react-native/docs/state.html). På denne måten kan vi sjekke hva vi skal vise til brukeren slik som nedenfor.
+hva som skal vises i [state](https://reactjs.org/docs/hooks-state.html). På denne måten kan vi sjekke hva vi skal vise til brukeren slik som nedenfor.
 
 ```
 // App.js
-class App extends React.Component {
-  state = {
-    pokemonIds: Array(150).fill().map((e,i) => i + 1),
-    route: "List",
-    pokeId: null
+function App() {
+  const [route, setRoute] = useState('List')
+  const [pokeId, setPokeId] = useState(null)
+
+  if (route === 'List') {
+    // return list
   }
-    
-  render() {
-    if (this.state.route === 'List') {
-      // return list
-    }
-    else if (this.state.route === 'Details') {
-      // return details
-    }
+
+  else if (route === 'Details') {
+    // return details
   }
 }
-export default App;
+
+export default App
 ```
 
 :trophy: **Din oppgave:** Lag en enkel routing slik at man kan navigere mellom liste- og detalje-visning.
 
 Tips:
-* Man endrer på state ved å bruke funksjonen [setState](https://facebook.github.io/react-native/docs/state.html)
-* Man kan sende med funksjoner som [props](https://facebook.github.io/react-native/docs/props.html) til komponenter. For eksempel kan det være lurt å bytte ut `onPress`-funksjonen du skrev i oppgave 2.6 med en som bruker `setState`. :wink:
-* I en større og/eller mer seriøs app ville man nok brukt et bibliotek for håndtering av navigering. [React Navigation](https://reactnavigation.org/docs/getting-started.html) er det klart mest populære alternativet i dag.
+* Man endrer på state ved å bruke funksjons argumentet til [useState](https://reactjs.org/docs/hooks-state.html). Eksempelvis, `[count, setCount]`, så er `count` staten og `setCount` funksjonen som endrer state.
+* Man kan sende med funksjoner som [props](https://facebook.github.io/react-native/docs/props.html) til komponenter. For eksempel kan det være lurt å bytte ut `onPress`-funksjonen du skrev i oppgave 2.6 med en som bruker `useState`. :wink:
+* I en større og/eller mer seriøs app ville man nok brukt et bibliotek for håndtering av navigering. [React Navigation](https://reactnavigation.org/docs/getting-started.html) er det mest populære alternativet i dag.
 
 
 ### Ekstraoppgaver
