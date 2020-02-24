@@ -1,43 +1,37 @@
-import React, { useState } from 'react'
-import { StyleSheet, Text, View, Button } from 'react-native'
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow
+ */
 
-import List from './components/List'
-import Details from './components/Details'
+import React, {useState} from 'react';
 
-function App() {
-  const [route, setRoute] = useState('List')
-  const [id, setId] = useState(0)
+import PokeList from './PokeList';
+import PokeDetails from './PokeDetails';
 
-  const updateState = (route, id) => {
-    setRoute(route)
-    setId(id)
-  }
+const pokemonIds = Array(150)
+  .fill()
+  .map((e, i) => i + 1);
 
-  if (route === 'Details') {
+const App = () => {
+  const [route, setRoute] = useState('List');
+  const [pokeId, setPokeId] = useState(null);
+
+  if (route === 'List') {
     return (
-      <View style={ styles.container }>
-        <Details
-          id={ id }
-          handleClick={ id => updateState('List', id) }
-        />
-      </View>
-    )
+      <PokeList
+        pokemonIds={pokemonIds}
+        onSelect={id => {
+          setPokeId(id);
+          setRoute('Details');
+        }}
+      />
+    );
+  } else if (route === 'Details') {
+    return <PokeDetails pokeId={pokeId} onBack={() => setRoute('List')} />;
   }
+};
 
-  return (
-    <View style={ styles.container }>
-      <List handleClick={ id => updateState('Details', id) } />
-    </View>
-  )
-}
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center'
-    flex: 1,
-    paddingVertical: 80,
-  }
-})
-
-
-export default App
+export default App;
