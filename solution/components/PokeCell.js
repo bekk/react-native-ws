@@ -1,30 +1,24 @@
-import React from "react";
+import React from 'react'
+import { View, Image, TouchableOpacity, StyleSheet } from 'react-native'
 
-import { View, Image, TouchableOpacity, StyleSheet } from "react-native";
-
-const PokeCell = ({ id, handleClick }) => {
+function PokeCell({ id, handleClick }) {
   return (
-    <TouchableOpacity onPress={() => handleClick(id)}>
+    <TouchableOpacity onPress={ () => handleClick(id) }>
       <Image
-        source={{
-          uri:
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" +
-            id +
-            ".png"
-        }}
-        style={styles.image}
+        source={{ uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png` }}
+        style={ styles.image }
       />
     </TouchableOpacity>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   image: {
     width: 100,
     height: 100,
-    backgroundColor: "#F5F5F5",
-    margin: 5
+    backgroundColor: '#fff',
+    margin: 5,
   }
-});
+})
 
-export default PokeCell;
+export default PokeCell

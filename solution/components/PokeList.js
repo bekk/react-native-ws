@@ -1,23 +1,21 @@
-import React from "react";
-import { View, Text, FlatList } from "react-native";
+import React from 'react'
+import { FlatList } from 'react-native'
 
-import PokeCell from "./PokeCell";
+import Item from './Item'
 
-const pokemonIds = Array.from({ length: 150 }, (v, k) => k + 1);
+const pokemonIds = Array.from({ length: 150 }, (v, k) => k + 1)
 
-const PokeList = ({ handleClick }) => {
+function PokeList({ handleClick }) {
   return (
-    <View>
-      <FlatList
-        numColumns="3"
-        data={pokemonIds}
-        renderItem={({ item }) => (
-          <PokeCell id={item} handleClick={handleClick} />
-        )}
-        keyExtractor={(item, index) => item}
-      />
-    </View>
-  );
-};
+    <FlatList
+      numColumns="3"
+      data={ pokemonIds }
+      renderItem={ ({ item }) => (
+        <Item id={ item } handleClick={ handleClick } />
+      )}
+      keyExtractor={ (item, index) => item }
+    />
+  )
+}
 
-export default PokeList;
+export default PokeList
