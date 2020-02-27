@@ -41,7 +41,7 @@ class: agenda
 
 * Samme design som React
 
-* Mye likt
+* Mye likt:
 
   * JSX
 
@@ -54,7 +54,8 @@ class: agenda
 
 * Native-komponenter istedenfor web-komponenter
 
-* ..og en del andre ting
+* ...og en del andre ting
+
 ---
 # Hvordan fungerer det
 Samme grafiske byggesteiner som iOS og Android
@@ -83,17 +84,16 @@ Vises forskjellig på iOS og Android
 ```html-javascript
 // App.js
 
-import React, { Component } from "react";
-import { Text } from "react-native";
+import React from 'react'
+import { Text } from 'react-native'
 
-export default class HelloWorldApp extends Component {
-  render() {
-    return (
-      <Text>Hello world!</Text>
-    );
-  }
+function HelloWorldApp() {
+  return (
+    <Text>Hello world!</Text>
+  )
 }
 
+export default HelloWorldApp
 ```
 ---
 # Komponenter
@@ -104,7 +104,7 @@ Alt du ser på skjermen er en eller annen komponent. Enten en
 * komponent du har laget selv
 * innebygd komponent
 
-Må inneholde en `render`-metode.
+Må inneholde en `render`-metode (klasse komponent) eller return (funksjonell komponent).
 
 ---
 # innebygde komponenter
@@ -131,49 +131,43 @@ Det er to typer data som påvirker en komponent i React Native: `props` og `stat
 ---
 # props
 ```html-javascript
-class Greeting extends Component {
-  render() {
-    return (
-      <Text>Hello {this.props.name}!</Text>
-    );
-  }
+function Greeting(props) {
+  return (
+    <Text>Hello {props.name}!</Text>
+  )
 }
 
-export default class LotsOfGreetings extends Component {
-  render() {
-    return (
-      <View>
-        <Greeting name="Svein"/>
-        <Greeting name="Mats"/>
-      </View>
-    );
-  }
+function LotsOfGreetings {
+  return (
+    <View>
+      <Greeting name="Svein" />
+      <Greeting name="Mats" />
+    </View>
+  )
 }
+
+export default LotsOfGreetings
 ```
 ---
 # state
 ```html-javascript
-export default class DisplayTextInput extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {text: ''};
-  }
+import React, { useState } from 'react'
 
-  render() {
-    return (
-      <View>
-        <TextInput
-          placeholder="Skriv her.."
-          value={this.state.text}
-          onChangeText={(text) => this.setState({text})}
-        />
-        <Text>
-          { this.state.text }
-        </Text>
-      </View>
-    );
+function DisplayTextInput() {
+  const [text, setText] = useState('')
+
+  return {
+    <View>
+      <TextInput
+        placeholder="Skriv her..."
+        value={ text }
+        onChangeText={ (text) => setText(text) }
+      />
+      <Text>{ text }</Text>
+    </View>
   }
 }
+export default DisplayTextInput
 ```
 ---
 # Ingen CSS, kun JavaScript
@@ -206,21 +200,21 @@ Inspirert av CSS
 
 * camel case
 ```html
-background-color = backgroundColor
+background-color -> backgroundColor
 ```
 
 * ingen units
 ```html
-margin: 20px = margin: 20
+margin: 20px -> margin: 20
 ```
 
 * stringer
 ```html
-text-align: center = textAlign: 'center'
+text-align: center -> textAlign: 'center'
 ```
 ---
 # StyleSheet.create
-## Man setter styling via style-prop
+## Man setter styling via en style-prop
 ```javascript-html
 <Text style={{ color: 'red' }}>Jeg er rød</Text>
   ```
@@ -229,14 +223,14 @@ text-align: center = textAlign: 'center'
 
 
 ```javascript-html
-import { StyleSheet } from "react-native"
+import { StyleSheet } from 'react-native'
 ...
 <Text style={ styles.red }>Jeg er rød</Text>
 ...
 
 const styles = StyleSheet.create({
   red: {
-    color: 'red'
+    color: 'red',
   }
 })
 ```
