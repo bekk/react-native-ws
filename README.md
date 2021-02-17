@@ -9,7 +9,7 @@ Vi skal lage Pokédex! Vet du ikke hva det er? Vi siterer [Wikipedia](https://no
 
 ## 1 Komme i gang
 
-Fra dette avsnittet av tar workshoppen utgangspunkt i at du bruker en ferdig oppsatt Mac. Bruker du din egen maskin, kan du følge instruksene under "Building Projects with Native Code" her: https://facebook.github.io/react-native/docs/getting-started
+Fra dette avsnittet av tar workshoppen utgangspunkt i at du bruker en Mac med et ferdig oppsatt utviklingsmiljø for React Native. Bruker du din egen maskin, kan du følge instruksene her: https://reactnative.dev/docs/environment-setup. Klikk på **React Native CLI Quickstart** og følg stegene under **Installing dependencies**. Velg iOS som Target OS dersom du ikke har noen preferanser. Det som da blir installert er Xcode, Cocapods, Node og Watchman.
 
 ### 1.1 Kjøre opp appen
 
